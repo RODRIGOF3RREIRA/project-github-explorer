@@ -2,15 +2,15 @@ import { useState } from "react";
 import { FiSearch } from "react-icons/fi";
 import { Container } from "./styles";
 
-export function SearchBar() {
+export function SearchBar({setUser}) {
   const [searchedValue, setSearchedValue] = useState("");
 
   function getUserData(event) {
     event.preventDefault();
     try {
       fetch(`https://api.github.com/users/${searchedValue}`)
-        .then((response) => response.json())
-        .then((data) => console.log(data));
+        .then(response => response.json())
+        .then(data => setUser(data));
     } catch (error) {
       console.log(error);
     }

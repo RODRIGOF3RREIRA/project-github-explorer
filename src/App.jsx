@@ -1,14 +1,17 @@
+import { useState } from "react";
 import { GlobalStyle } from "./styles/global";
 import { Container } from "./styles/Home";
 import { SearchBar } from "./components/SearchBar";
 import { User } from "./components/User";
 
 function App() {
+  const [user, setUser] = useState();
+
   return (
     <Container>
-      <SearchBar />;
-      <User />;
-      <GlobalStyle />;
+      <SearchBar setUser={setUser} />
+      {user && <User user={user} />}
+      <GlobalStyle />
     </Container>
   );
 }
