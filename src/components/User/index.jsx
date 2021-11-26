@@ -1,6 +1,6 @@
 import { Container } from "./styles";
 
-export function User({ user, userRepos }) {
+export function User({ user, userRepos, setIsReposListActive }) {
   return (
     <Container>
       <img src={user.avatar_url} alt={user.name} />
@@ -9,10 +9,10 @@ export function User({ user, userRepos }) {
       <p>{user.bio}</p>
 
       <section>
-        <div>
+        <button type="button" onClick={() => setIsReposListActive(true)}>
           <strong>{userRepos?.length}</strong>
           <span>Repositórios</span>
-        </div>
+        </button>
 
         <div>
           <strong>{user.followers}</strong>
