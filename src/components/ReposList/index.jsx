@@ -1,7 +1,7 @@
 import { FiArrowLeft } from "react-icons/fi";
 import { Container } from "./styles";
 
-export function ReposList() {
+export function ReposList({ user, userRepos }) {
   return (
     <Container>
       <div>
@@ -9,15 +9,17 @@ export function ReposList() {
           <FiArrowLeft />
           Voltar
         </button>
-        <h1>Repositórios de fulano</h1>
+        <h1>Repositórios de {user.name}</h1>
       </div>
 
       <ul>
-        <li>
-          <h2>Nome do repo</h2>
-          <p>Desc do repo</p>
-          <a href="/">Acessar repo</a>
-        </li>
+        {userRepos.map((repo) => (
+          <li key={repo.id}>
+            <h2>{repo.name}</h2>
+            <p>{repo.description}</p>
+            <a href={repo.html_url}>Acessar repositórios</a>
+          </li>
+        ))}
       </ul>
     </Container>
   );
